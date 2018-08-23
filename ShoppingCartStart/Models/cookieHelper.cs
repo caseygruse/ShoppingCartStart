@@ -21,16 +21,17 @@ namespace ShoppingCartStart.Models
 			prods = JsonConvert.DeserializeObject<List<Product>>(cartCookie.Value);
 			return prods;
 		}
-
+		/// <summary>
+		/// adds product to existing list of products and saves them as cookies
+		/// </summary>
+		/// <param name="p"></param>
+		/// <param name="GetProducts"></param>
+		/// <param name="qty"></param>
 		public static void AddProduct(Product p, List<Product> GetProducts, short qty)
 		{
 			List<Product> products = GetProducts;
-			//for (int i = 0; i < qty; i++)
-			//{
-			//	products.Add(p);
-			//}
-			products.Add(p);
 			
+			products.Add(p);
 
 			//get string for the object you are adding to cart
 			string jsonData = JsonConvert.SerializeObject(products);
