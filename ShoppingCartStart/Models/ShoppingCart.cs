@@ -39,9 +39,16 @@ namespace ShoppingCartStart.Models
 				return products;
 			}
 		}
-		//public static List<Product> GetAllCartProducts()
-		//{
-		//	return products;
-		//}
+
+		public static int GetCartQuanity()
+        {
+            List<Product> products = GetProducts();
+            int quanity = 0;
+            foreach(Product p in products)
+            {
+                quanity += p.Quantity;
+            }
+            return quanity;
+        }
 	}
 }

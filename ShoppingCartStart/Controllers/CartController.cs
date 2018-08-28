@@ -31,7 +31,7 @@ namespace ShoppingCartStart.Controllers
 		public ActionResult ViewCart()
 		{
 			List<Product> cartProducts = ShoppingCart.GetProducts();
-			return View();
+			return View(cartProducts);
 		}
     }
 }
