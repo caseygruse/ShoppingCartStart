@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,23 @@ namespace ShoppingCartStart.Models
 			return false;
 		}
 
-		
+		public static List<Product> GetProducts()
+		{
+			List<Product> products = new List<Product>();
+			HttpCookie cartCookie = HttpContext.Current.Request.Cookies["cart"];
+			if(cartCookie == null)
+			{
+				return products;
+			}
+			else
+			{
+				products = JsonConvert.DeserializeObject<List<Product>>(cartCookie.Value);
+				return products;
+			}
+		}
+		//public static List<Product> GetAllCartProducts()
+		//{
+		//	return products;
+		//}
 	}
 }
